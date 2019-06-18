@@ -1,0 +1,49 @@
+// Alignment
+.u-text-left { text-align: left; }
+
+.u-text-right { text-align: right; }
+
+.u-text-center { text-align: center; }
+
+// Transformation
+.u-text-lowercase { text-transform: lowercase; }
+
+.u-text-uppercase { text-transform: uppercase; }
+
+.u-text-capitalize { text-transform: capitalize; }
+
+.u-text-normalized { text-transform: none; }
+
+// Decoration
+.u-text-underlined { text-decoration: underline; }
+
+// Weight and italics
+.u-text-regular { font-weight: 400; }
+
+.u-text-medium { font-weight: 500; }
+
+.u-text-bold { font-weight: 700; }
+
+// Size
+$font-size: 12;
+$font-sizes: (
+        12: (size: $font-size),
+        14: (size: $font-size + 2),
+        16: (size: $font-size + 4),
+        18: (size: $font-size + 6),
+        20: (size: $font-size + 8),
+        24: (size: $font-size + 12),
+        32: (size: $font-size + 20),
+        40: (size: $font-size + 28),
+        48: (size: $font-size + 36),
+        56: (size: $font-size + 44),
+        64: (size: $font-size + 52)
+);
+
+@each $size, $sizes in $font-sizes {
+  $s: #{map-get($sizes, size)}px;
+
+  .u-fz-#{$size} {
+    font-size: $s;
+  }
+}

@@ -4,3 +4,11 @@
     display: flex;
     flex-direction: column;
 }
+
+button, mat-form-field {
+    min-width: 280px;
+}
+
+button {
+    min-height: 48px;
+}

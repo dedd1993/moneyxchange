@@ -1,0 +1,54 @@
+<form fxFlex
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutAlign.lt-md="center normal"
+      [formGroup]="exchangeForm"
+      (ngSubmit)="exchangeForm.valid && onCalculate()"
+      class="u-padding-y-64 u-padding-x-24">
+  
+  <div fxLayout="row"
+       fxLayout.lt-md="column"
+       fxLayoutGap="16px"
+       fxLayoutGap.lt-md="0"> 
+
+    <mat-form-field appearance="outline">
+      <mat-label>Euros</mat-label>
+
+      <input formControlName="euroInput"
+             type="number"
+             autocomplete="off"
+             matInput>
+      
+      <mat-icon matSuffix>euro_symbol</mat-icon>
+      
+      <mat-error *ngIf="exchangeForm.controls['euroInput'].hasError('pattern')" class="form-control-feedback">
+        The field only allows a maximum of 4 decimals.
+      </mat-error>
+
+      <mat-error *ngIf="exchangeForm.controls['euroInput'].hasError('required')" class="form-control-feedback">
+        This field is required.
+      </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Dollars</mat-label>
+
+      <input formControlName="dollarInput"
+             type="text"
+             autocomplete="off"
+             matInput>
+
+      <mat-icon matSuffix>attach_money</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <button type="submit"
+          color="primary"
+          [disabled]="exchangeLoading"
+          mat-raised-button>
+    {{ exchangeLoading ? 'CALCULATING...' : 'CALCULATE' }}
+  </button>
+  
+
+</form>
